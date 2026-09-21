@@ -1,3 +1,4 @@
+import React from "react";
 import { useState } from "react";
 
 import { runInference } from "./services/api";
@@ -185,14 +186,16 @@ export default function App() {
           )}
 
 
-          <h3>
-
+        <h3>
             Predicted error step:{" "}
+            {result.predicted_error_step ?? "None"}
+        </h3>
 
-            {result.predicted_error_step
-              ?? "None"}
+        <h3>Final Answer</h3>
 
-          </h3>
+        <p>
+          {result.final_answer ?? "No final answer returned."}
+        </p>
 
         </section>
 

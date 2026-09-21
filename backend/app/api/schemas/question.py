@@ -1,15 +1,16 @@
-from pydantic import BaseModel, Field
+from pydantic import BaseModel
 
 
-class QuestionRequest(BaseModel):
-    question: str = Field(
-        ...,
-        min_length=1,
-        description="Question that the AI should answer"
-    )
+class QuestionCreate(BaseModel):
+    question_text: str
+    reference_answer: str | None = None
+    dataset: str = "gsm8k"
+    dataset_question_id: str | None = None
 
 
 class QuestionResponse(BaseModel):
-    question_id: str
-    question: str
-    status: str
+    id: int
+    dataset: str
+    dataset_question_id: str | None = None
+    question_text: str
+    reference_answer: str | None = None
